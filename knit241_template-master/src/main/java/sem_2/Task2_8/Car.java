@@ -13,12 +13,18 @@ class Car implements Runnable {
     public void run() {
         try {
             while (true) {
-                if (!trafficLight.isGreenLight()) {
-                    System.out.println(name + " ждет зеленого света.");
+                // Проверяем цвет светофора
+                boolean needWait = !trafficLight.isGreenLight();
+                if (needWait) {
+                    synchronized (System.out) {
+                        System.out.println(name + " ждет зеленого света.");
+                    }
                     trafficLight.waitForGreen();
                 }
-                System.out.println(name + " едет.");
-                Thread.sleep(1000); // Движение
+                synchronized (System.out) {
+                    System.out.println(name + " едет.");
+                }
+                Thread.sleep(1000); //движение
             }
         } catch (InterruptedException e) {
             Thread.currentThread().interrupt();

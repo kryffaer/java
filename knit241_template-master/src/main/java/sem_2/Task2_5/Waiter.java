@@ -10,9 +10,9 @@ class Waiter extends Thread {
     @Override
     public void run() {
         try {
-            for (int i = 0; i < 5; i++) {
+            for (int i = 0; i < 10; i++) {
                 restaurant.takeDish();
-                Thread.sleep(1000); // Подача блюда
+                Thread.sleep(3000); // Подача блюда
             }
         } catch (InterruptedException e) {
             Thread.currentThread().interrupt();

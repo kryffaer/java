@@ -10,9 +10,9 @@ class Cook extends Thread {
     @Override
     public void run() {
         try {
-            for (int i = 0; i < 5; i++) {
+            for (int i = 0; i < 10; i++) {
                 restaurant.addDish();
-                Thread.sleep(1500); // Приготовление блюда
+                Thread.sleep(1000); // Приготовление блюда
             }
         } catch (InterruptedException e) {
             Thread.currentThread().interrupt();
